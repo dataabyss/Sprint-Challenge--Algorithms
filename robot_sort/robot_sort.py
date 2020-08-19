@@ -5,6 +5,7 @@ class SortingRobot:
         """
         self._list = l          # The list the robot is tasked with sorting
         self._item = None       # The item the robot is holding
+        # self._item = 1         # For testing
         self._position = 0      # The list position the robot is at
         self._light = "OFF"     # The state of the robot's light
         self._time = 0          # A time counter (stretch)
@@ -97,7 +98,42 @@ class SortingRobot:
         Sort the robot's list.
         """
         # Fill this out
-        pass
+        self.swap_item()
+        self.set_light_on()
+        while self.light_is_on():
+            if self.can_move_right() == True:
+                self.compare_item()
+                if self.compare_item() == 1:  # robot item > list item
+                    self.swap_item()
+                    self.move_right()
+                elif self.compare_item() == -1:  # robot item < list item
+                    self.move_right()
+                elif self.compare_item() == self._list[self._position]:
+                    self.move_right()
+                else:
+                    # return l # the letter 'l' for list, not '1' for one
+                    return self._list
+            else:
+                self.set_light_off()
+        # while self.light_is_off():
+        else:
+            if self.can_move_left() == True:
+                # self.move_left()
+                self.compare_item()
+                if self.compare_item() == -1: # robot item < list item
+                    self.swap_item()
+                    self.move_left()
+                elif self.compare_item() == 1:  # robot item > list item
+                    self.move_left()
+                elif self.compare_item() == self._list[self._position]:
+                    self.move_left()
+                else:
+                    # return l # the letter 'l' for list, not '1' for one
+                    return self._list
+            else:
+                # return l # the letter 'l' for list, not '1' for one
+                return self._list
+        return self._list
 
 
 if __name__ == "__main__":

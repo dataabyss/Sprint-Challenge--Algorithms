@@ -4,12 +4,19 @@
 
 a) O(1)
 
-The variable 'a' remains constant in this function,
-therefore the runtime will remain constant.
+The variable 'a' is changed by a constant value in this function, therefore it is O(1).
+
+- - - - - 
+
+ANS: O(n)
 
 b) O(n^2)
 
 The variable 'sum' increases by 1 for every increment in range 'n', therefor the runtime is dependent on the range of 'n'. Since 'sum' changes while 'j' is also being multiplied and the function depends on 'j' being less than 'n', there are two values being iterated which leads to an n^2 runtime. 
+
+- - - - -
+
+ANS: O(nlog(n))
 
 c) O(n)
 
